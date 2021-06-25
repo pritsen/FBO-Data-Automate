@@ -16,8 +16,8 @@ def compdata():
         STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
         STORAGEACCOUNTKEY= "qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
         LOCALFILENAME= "Opportunity-2.csv"
-        CONTAINERNAME= "fbostoracct"
-        BLOBNAME= "fbo-blob"
+        CONTAINERNAME= "fbo-blob"
+        BLOBNAME= "Opportunity-2.csv"
         #download from blob
         t1=time.time()
         blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
