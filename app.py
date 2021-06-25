@@ -21,7 +21,7 @@ def compdata():
     STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
     STORAGEACCOUNTKEY= "qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
     LOCALFILENAME= "Opportunity.csv"
-    CONTAINERNAME= "fbo-blob"
+    CONTAINERNAME= "fbostoracct"
     BLOBNAME= "fbo-blob"
 
     #download from blob
