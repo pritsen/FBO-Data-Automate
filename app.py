@@ -13,7 +13,7 @@ from io import StringIO
 
 app = Flask(__name__)
 
-@app.route("/compdata")
+@app.route("/oppdata")
 def compdata():
     try:
         STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
@@ -22,9 +22,9 @@ def compdata():
         CONTAINERNAME= "fbo-blob"
         BLOBNAME= "Opportunity-2.csv"
         #download from blob
-        #t1=time.time()
-        #blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
-        #blob_client_instance = BlobServiceClient.get_blob_client(CONTAINERNAME, BLOBNAME, snapshot=None)
+        t1=time.time()
+        blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
+        blob_client_instance = BlobServiceClient.get_blob_client(CONTAINERNAME, BLOBNAME, snapshot=None)
         #with open(LOCALFILENAME, "wb") as my_blob:
             #blob_data = blob_client_instance.download_blob()
             #blob_data.readinto(my_blob)
