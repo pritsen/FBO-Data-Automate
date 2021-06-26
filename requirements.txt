@@ -3,6 +3,5 @@ Pandas>=1.1.5
 azure.storage.blob>1.10.0
 sqlalchemy>=1.4.17
 tqdm>=4.61.1
-python-engineio>=4.2.0
 setuptools>=57.0.0
 azure>=4.0.0
