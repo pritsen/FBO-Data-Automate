@@ -32,7 +32,7 @@ def compdata():
             blob_data.readinto(my_blob)
             t2=time.time()
         print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
-        df=pd.read_csv(LOCALFILENAME)
+        df=pd.read_csv(LOCALFILENAME, encoding='1252')
         #print(df)
         return df
     except Exception as e:
