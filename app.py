@@ -8,15 +8,12 @@ from fbodatfunc import chunker
 from fbodatfunc import connectdb
 import time
 
-
 app = Flask(__name__)
 
 @app.route("/oppdata")
 def compdata():
     try:
         STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
-        account_name="fbostoracct"
-        account_key="qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
         STORAGEACCOUNTKEY= "qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
         CONTAINERNAME= "fbo-blob"
         BLOBNAME= "OpportunityData-2.csv"
