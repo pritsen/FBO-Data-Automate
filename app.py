@@ -7,7 +7,6 @@ from azure.storage.blob import BlobServiceClient
 from fbodatfunc import chunker
 from fbodatfunc import connectdb
 import time
-from io import StringIO
 
 
 app = Flask(__name__)
@@ -29,7 +28,6 @@ def compdata():
             blob_data = blob_client_instance.download_blob()
             blob_data.readinto(my_blob)
             t2=time.time()
-        print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
         df=pd.read_csv(LOCALFILENAME, encoding='1252')
         return df
     except Exception as e:
