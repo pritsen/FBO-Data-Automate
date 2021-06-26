@@ -4,7 +4,7 @@ from tqdm import tqdm
 from sqlalchemy import create_engine
 import urllib
 from azure.storage.blob import BlobServiceClient
-from azure.storage.blob import blob_service
+#from azure.storage.blob import blob_service
 from fbodatfunc import chunker
 from fbodatfunc import connectdb
 import time
@@ -29,7 +29,7 @@ def compdata():
             #blob_data = blob_client_instance.download_blob()
             #blob_data.readinto(my_blob)
         #t2=time.time()
-        blobstring = blob_service.get_blob_to_text(CONTAINERNAME,BLOBNAME).content
+        blobstring = blob_service_client_instance.get_blob_to_text(CONTAINERNAME,BLOBNAME).content
         df=pd.read_csv(StringIO(blobstring))
         return df
     except Exception as e:
