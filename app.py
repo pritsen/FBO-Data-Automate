@@ -33,7 +33,7 @@ def compdata():
         df=pd.read_csv(StringIO(blobstring))
         return df
     except Exception as e:
-        print("Unable to read file", e)
+        return "Unable to read file" + e
 
 
 @app.route("/test")
