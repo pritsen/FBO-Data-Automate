@@ -6,12 +6,15 @@ from fbodatfunc import chunker
 from fbodatfunc import connectdb
 import time
 import sys
+import logging
 
 app = Flask(__name__)
 
 @app.route("/oppdata")
 def oppdata():
     try:
+        print("Dataframe Creation Started", file=sys.stderr)
+        app.logger.info("Dataframe Creation Started")
         STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
         STORAGEACCOUNTKEY= "qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
         CONTAINERNAME= "fbo-blob"
@@ -45,4 +48,5 @@ def oppdata():
 
 @app.route("/test")
 def hello():
+    print("Test", file=sys.stderr)
     return "API Test Successful!"
