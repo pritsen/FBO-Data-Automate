@@ -16,7 +16,7 @@ def oppdata():
         STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
         STORAGEACCOUNTKEY= "qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
         CONTAINERNAME= "fbo-blob"
-        BLOBNAME= "Opportunity.csv"
+        BLOBNAME= "Opportunities.csv"
         LOCALFILENAME = "opptest.csv"
         t1=time.time()
         blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
