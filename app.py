@@ -1,8 +1,6 @@
 from flask import Flask
 import pandas as pd
 from tqdm import tqdm
-from sqlalchemy import create_engine
-import urllib
 from azure.storage.blob import BlobServiceClient
 from fbodatfunc import chunker
 from fbodatfunc import connectdb
@@ -27,9 +25,18 @@ def oppdata():
         t2=time.time()
         #print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
         df=pd.read_csv(LOCALFILENAME, encoding='1252')
-        return "Dataframe Created Successfully"
     except:
         return "Dataframe Creation Unsuccessful"
+    chunksize = int(len(df) / len(df))  # 1%
+    with tqdm(total=len(df)) as pbar:
+        for i, cdf in enumerate(chunker(df, chunksize)):
+            replace = "replace" if i == 0 else "append"
+            try:
+                cdf.to_sql("OPPORTUNITY", con=connectdb(), schema="FBO", if_exists="append", index=False)
+            except Exception as e:
+                dflog = [[time,e,cdf]]
+            pbar.update(chunksize)
+    return "Opportunity Table Updated Successfully"
 
 
 @app.route("/test")

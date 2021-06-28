@@ -1,5 +1,3 @@
-import pandas as pd
-from tqdm import tqdm
 from sqlalchemy import create_engine
 import urllib
 
