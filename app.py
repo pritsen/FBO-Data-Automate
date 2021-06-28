@@ -5,6 +5,7 @@ from azure.storage.blob import BlobServiceClient
 from fbodatfunc import chunker
 from fbodatfunc import connectdb
 import time
+import sys
 
 app = Flask(__name__)
 
@@ -33,7 +34,9 @@ def oppdata():
             replace = "replace" if i == 0 else "append"
             try:
                 cdf.to_sql("OPPORTUNITY", con=connectdb(), schema="FBO", if_exists="append", index=False)
+                print("Data Row Insert Successful", file=sys.stdout)
             except Exception as e:
+                print("Data Inser Failed", e, file=sys.stdout)
                 dflog = [[time,e,cdf]]
             pbar.update(chunksize)
     return "Opportunity Table Updated Successfully"
