@@ -12,7 +12,6 @@ app = Flask(__name__)
 
 @app.route("/oppdata")
 def oppdata():
-    #df = [['Test1',1,'x'],['Test2',2,'y']]
     return 'Dataframe Created successfully'
 
 
