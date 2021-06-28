@@ -26,7 +26,7 @@ def oppdata():
         t2=time.time()
         #print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
         df=pd.read_csv(LOCALFILENAME, encoding='1252')
-        print("Dataframe Creation Successful", file=sys.stdout)
+        print("Dataframe Creation Successful", file=sys.stderr)
     except:
         return "Dataframe Creation Unsuccessful"
     chunksize = int(len(df) / len(df))  # 1%
@@ -35,7 +35,7 @@ def oppdata():
             replace = "replace" if i == 0 else "append"
             try:
                 cdf.to_sql("OPPORTUNITY", con=connectdb(), schema="FBO", if_exists="append", index=False)
-                print("Data Row Insert Successful", file=sys.stdout)
+                print("Data Row Insert Successful", file=sys.stderr)
             except Exception as e:
                 print("Data Inser Failed", e, file=sys.stderr)
                 dflog = [[time,e,cdf]]
