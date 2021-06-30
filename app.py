@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/oppdata")
 def oppdata():
     try:
-        print("Dataframe Creation Started", file=sys.stderr)
+        #print("Dataframe Creation Started", file=sys.stderr)
         app.logger.info("Dataframe Creation Started")
         STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
         STORAGEACCOUNTKEY= "qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
@@ -29,7 +29,7 @@ def oppdata():
         t2=time.time()
         #print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
         df=pd.read_csv(LOCALFILENAME, encoding='1252')
-        print("Dataframe Creation Successful", file=sys.stderr)
+        #print("Dataframe Creation Successful", file=sys.stderr)
     except:
         return "Dataframe Creation Unsuccessful"
 
