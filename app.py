@@ -32,18 +32,6 @@ def oppdata():
         print("Dataframe Creation Successful", file=sys.stderr)
     except:
         return "Dataframe Creation Unsuccessful"
-    '''chunksize = int(len(df) / len(df))  # 1%
-    with tqdm(total=len(df)) as pbar:
-        for i, cdf in enumerate(chunker(df, chunksize)):
-            replace = "replace" if i == 0 else "append"
-            try:
-                cdf.to_sql("OPPORTUNITY", con=connectdb(), schema="FBO", if_exists="append", index=False)
-                print("Data Row Insert Successful", file=sys.stderr)
-            except Exception as e:
-                print("Data Insert Failed", e, file=sys.stderr)
-                dflog = [[time,e,cdf]]
-            pbar.update(chunksize)
-    return "Opportunity Table Updated Successfully"'''
 
 
 @app.route("/test")
