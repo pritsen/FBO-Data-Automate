@@ -7,29 +7,18 @@ from fbodatfunc import connectdb
 import time
 import sys
 import logging
+import io
+import requests
 
 app = Flask(__name__)
 
 @app.route("/oppdata")
 def oppdata():
     try:
-        #print("Dataframe Creation Started", file=sys.stderr)
-        app.logger.info("Dataframe Creation Started")
-        STORAGEACCOUNTURL= "https://fbostoracct.blob.core.windows.net/"
-        STORAGEACCOUNTKEY= "qcNEwmBQtcOOQAgDdHLwpC02urawMOxpYNHvkUtK4FKiWcuuAxCiZpLMrD1uE5QQl/etZoxk85cCICGsznlBCA=="
-        CONTAINERNAME= "fbo-blob"
-        BLOBNAME= "OpportunityData-2.csv"
-        LOCALFILENAME = "opptest.csv"
-        t1=time.time()
-        blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
-        blob_client_instance = blob_service_client_instance.get_blob_client(CONTAINERNAME, BLOBNAME, None)
-        with open(LOCALFILENAME, "wb") as my_blob:
-            blob_data = blob_client_instance.download_blob()
-            blob_data.readinto(my_blob)
-        t2=time.time()
-        #print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
-        df=pd.read_csv(LOCALFILENAME, encoding='1252')
-        #print("Dataframe Creation Successful", file=sys.stderr)
+        url="https://drive.google.com/uc?export=download&confirm=Sc8m&id=1a0w7rQhuib8jGSf7g2ovd-sDmUnXPMhX"
+        s=requests.get(url).content
+        c=pd.read_csv(io.StringIO(s.decode('1252')), error_bad_lines=False)
+        return "Dataframe Creation Successful"
     except:
         return "Dataframe Creation Unsuccessful"
 

@@ -5,4 +5,3 @@ sqlalchemy>=1.4.17
 tqdm>=4.61.1
 setuptools>=57.0.0
 azure>=4.0.0
-logging>=0.4.9.6
