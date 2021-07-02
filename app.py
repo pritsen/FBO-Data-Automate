@@ -17,7 +17,7 @@ def oppdata():
     try:
         url="https://drive.google.com/uc?export=download&confirm=Sc8m&id=1a0w7rQhuib8jGSf7g2ovd-sDmUnXPMhX"
         s=requests.get(url).content
-        c=pd.read_csv(io.StringIO(s.decode('1252')), error_bad_lines=False)
+        c=pd.read_csv(io.StringIO(s.decode('1252')))
         return "Dataframe Creation Successful"
     except:
         return "Dataframe Creation Unsuccessful"
