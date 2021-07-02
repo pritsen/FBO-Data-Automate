@@ -26,7 +26,7 @@ def oppdata():
     return "Data Insert Successful"
 
 
-@app.route("/test")
+@app.route("/")
 def hello():
     print("Test", file=sys.stderr)
     return "API Test Successful!"
