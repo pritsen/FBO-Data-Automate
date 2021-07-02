@@ -17,17 +17,14 @@ app = Flask(__name__)
 
 @app.route("/oppdata")
 def oppdata():
-    try:
-        url="https://drive.google.com/uc?export=download&confirm=Sc8m&id=1a0w7rQhuib8jGSf7g2ovd-sDmUnXPMhX"
-        s=requests.get(url).content
-        c=pd.read_csv(io.StringIO(s.decode('1252')))
-        quoted = urllib.parse.quote_plus(
-        "Driver={ODBC Driver 17 for SQL Server};Server=tcp:fbonextdb.database.windows.net,1433;Database=FBONextDB;Uid=fbodbadmin;Pwd={!1BHeN3?rt<q78i2};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30")
-        engine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted))
-        pd.to_sql("OPPORTUNITY_TEST", con=engine, schema="FBO", if_exists="append", index=False)
-        return "Data Insert Successful"
-    except:
-        return "Dataframe Creation Unsuccessful"
+    #url="https://drive.google.com/uc?export=download&confirm=mrxU&id=1a0w7rQhuib8jGSf7g2ovd-sDmUnXPMhX"
+    #s=requests.get(url).content
+    df=pd.read_csv("OpportunityData-2.csv", encoding="1252")
+    quoted = urllib.parse.quote_plus(
+        "Driver={ODBC Driver 17 for SQL Server};Server=tcp:fbonextdb.database.windows.net,1433;Database=FBONextDB;Uid=fbodbadmin;Pwd={!1BHeN3?rt<q78i2};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=3000")
+    engine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted))
+    df.to_sql("OPPORTUNITY_TEST", con=engine, schema="FBO", if_exists="append", index=False)
+    return "Data Insert Successful"
 
 
 @app.route("/test")

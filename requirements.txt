@@ -1,7 +1,7 @@
-Flask>=1.0,<=1.1.2
-Pandas>=1.1.5
-azure.storage.blob>1.10.0
-sqlalchemy>=1.4.17
-tqdm>=4.61.1
-setuptools>=57.0.0
-azure>=4.0.0
+Flask
+Pandas
+azure.storage.blob
+FLASK-sqlalchemy
+tqdm
+setuptools
+azure
