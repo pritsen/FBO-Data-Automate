@@ -4,7 +4,6 @@ from pandas.core.frame import DataFrame
 from tqdm import tqdm
 from sqlalchemy import create_engine
 import urllib
-from azure.storage.blob import BlobServiceClient
 from fbodatfunc import chunker
 from fbodatfunc import connectdb
 import time
@@ -19,7 +18,7 @@ app = Flask(__name__)
 def oppdata():
     #url="https://drive.google.com/uc?export=download&confirm=mrxU&id=1a0w7rQhuib8jGSf7g2ovd-sDmUnXPMhX"
     #s=requests.get(url).content
-    df=pd.read_csv("OpportunityData-2.csv", encoding="1252")
+    df=pd.read_csv("OpportunityData-3.csv", encoding="1252")
     quoted = urllib.parse.quote_plus(
         "Driver={ODBC Driver 17 for SQL Server};Server=tcp:fbonextdb.database.windows.net,1433;Database=FBONextDB;Uid=fbodbadmin;Pwd={!1BHeN3?rt<q78i2};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=3000")
     engine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted))
